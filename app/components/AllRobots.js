@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchRobots } from "../redux/robots";
 
 // Notice that we're exporting the AllRobots component twice. The named export
@@ -23,7 +24,9 @@ export class AllRobots extends React.Component {
                   <img src={robot.imageUrl} />
                 </div>
                 <div id="details">
-                  <h3>{robot.name}</h3>
+                  <Link to={`/robots/${robot.id}`}>
+                    <h3>{robot.name}</h3>
+                  </Link>
                   <p>Fuel Type: {robot.fuelType}</p>
                   <p> Fuel Level: {robot.fuelLevel}</p>
                 </div>
