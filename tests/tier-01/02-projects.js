@@ -247,7 +247,7 @@ describe("Tier One: Projects", () => {
 
     // Consider writing your GET route in server/api/projects.js. And don't
     // forget to apply the express router to your API in server/api/index.js!
-    xit("GET /api/projects responds with all projects", async () => {
+    it("GET /api/projects responds with all projects", async () => {
       const response = await agent.get("/api/projects").expect(200);
       expect(response.body).to.deep.equal(projects);
       expect(Project.findAll.calledOnce).to.be.equal(true);
@@ -347,7 +347,7 @@ describe("Tier One: Projects", () => {
     // command line.
     beforeEach(seed);
 
-    xit("populates the database with at least three projects", async () => {
+    it("populates the database with at least three projects", async () => {
       const seedProjects = await Project.findAll();
       expect(seedProjects).to.have.lengthOf.at.least(3);
     });

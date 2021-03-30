@@ -255,7 +255,7 @@ describe("Tier One: Robots", () => {
 
     // Consider writing your GET route in server/api/robots.js. And don't
     // forget to apply the express router to your API in server/api/index.js!
-    xit("GET /api/robots responds with all robots", async () => {
+    it("GET /api/robots responds with all robots", async () => {
       const response = await agent.get("/api/robots").expect(200);
       expect(response.body).to.deep.equal(robots);
       expect(Robot.findAll.calledOnce).to.be.equal(true);
@@ -336,7 +336,7 @@ describe("Tier One: Robots", () => {
     // command line.
     beforeEach(seed);
 
-    xit("populates the database with at least three robots", async () => {
+    it("populates the database with at least three robots", async () => {
       const seedRobots = await Robot.findAll();
       expect(seedRobots).to.have.lengthOf.at.least(3);
     });
