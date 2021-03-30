@@ -11,7 +11,7 @@ module.exports = db.define("project", {
     },
   },
   deadline: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATE(6),
   },
   priority: {
     type: Sequelize.INTEGER,

@@ -22,27 +22,31 @@ const robots = [
   },
 ];
 
+const date = new Date();
 const projects = [
   {
-    title: "marketing campaign",
-    deadline: "06/22/2021",
+    title: "Customer Service",
+    deadline: date,
     priority: 5,
     completed: false,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:
+      "helps health care providers and patients by greeting them in person and by phone, answering questions and requests, and referring inquiries to the pharmacist.",
   },
   {
-    title: "customer feedback",
-    deadline: "04/01/2021",
+    title: "Maintain Records",
+    deadline: date,
     priority: 6,
     completed: false,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:
+      "maintains records by recording and filing physicians’ orders and prescriptions.",
   },
   {
-    title: "inventory",
-    deadline: "05/15/2021",
+    title: "Maintain Inventory",
+    deadline: date,
     priority: 8,
     completed: false,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:
+      "maintains pharmacy inventory by checking pharmaceutical stock to determine inventory level, anticipating needed medications and supplies, placing and expediting orders, verifying receipt, and removing outdated drugs.",
   },
 ];
 const seed = async () => {

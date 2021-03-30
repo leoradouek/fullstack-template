@@ -16,6 +16,22 @@ body {
   width: 100vw;
 }
 
+h1 {
+  font-size: 25px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: cornflowerblue;
+  text-align: center;
+  border: 2px dotted navy;
+}
+
+h3 {
+  font-size: 17px;
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(85, 85, 168);
+  text-align: center;
+  text-decoration: underline;
+}
+
 nav {
   align-items: center;
   background-color: #c8dffa;
@@ -23,6 +39,8 @@ nav {
   display: flex;
   height: 80px;
   padding: 10px;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 main {
@@ -30,4 +48,46 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+main img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border: 1px solid navy;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+main p {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 30px;
+}
+
+.all-view {
+  border: 2px solid rgb(23, 3, 136);
+  background-color: rgba(175, 175, 233, 0.151);
+  flex-basis: 33%;
+}
+
+.all-view p {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+}
+
+.all-view img {
+  border-radius: 50%;
+  background-color: white;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+.column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

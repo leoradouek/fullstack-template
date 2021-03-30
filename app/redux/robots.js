@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// action types
+// action type
 const SET_ROBOTS = "SET_ROBOTS";
 
 // action creator
