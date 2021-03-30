@@ -69,10 +69,12 @@ main p {
   border: 2px solid rgb(23, 3, 136);
   background-color: rgba(175, 175, 233, 0.151);
   flex-basis: 33%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .all-view p {
-  text-align: center;
+  text-align: start;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 13px;
 }
@@ -80,9 +82,6 @@ main p {
 .all-view img {
   border-radius: 50%;
   background-color: white;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   width: 30%;
 }
 

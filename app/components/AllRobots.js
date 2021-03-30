@@ -18,12 +18,14 @@ export class AllRobots extends React.Component {
         <div className="column">
           {robots.map((robot) => (
             <div key={robot.id} className="all-view">
-              <h3>{robot.name}</h3>
-              <img src={robot.imageUrl} />
-              <h3>Fuel Type</h3>
-              <p>{robot.fuelType}</p>
-              <h3> Fuel Level</h3>
-              <p> {robot.fuelLevel}</p>
+              <div id="title">
+                <h3>{robot.name}</h3>
+              </div>
+              <div id="details">
+                <img src={robot.imageUrl} />
+                <p>Fuel Type: {robot.fuelType}</p>
+                <p> Fuel Level: {robot.fuelLevel}</p>
+              </div>
             </div>
           ))}
         </div>
