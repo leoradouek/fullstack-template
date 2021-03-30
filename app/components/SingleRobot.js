@@ -9,26 +9,42 @@ class SingleRobot extends React.Component {
 
   render() {
     const robot = this.props.robot;
-    const projects = this.props.projects || [];
+    const projects = robot.projects || [];
+    console.log("ROBOT", robot);
+    console.log("PROJECTS", projects);
     return (
-      <div id="single-robot">
-        <div>
-          <img src={robot.imageUrl} />
+      <div className="single-view">
+        <div className="single-main">
+          <div>
+            <img src={robot.imageUrl} />
+          </div>
+          <div>
+            <p>{robot.name}</p>
+            <p>{robot.fuelType}</p>
+            <p>{robot.fuelLevel}</p>
+          </div>
         </div>
-        <div>
-          <p>{robot.name}</p>
-          <p>{robot.fuelType}</p>
-          <p>{robot.fuelLevel}</p>
-        </div>
-        <div>
-          <p>Projects assigned to {robot.name}:</p>
-          {projects.length > 0 ? (
-            projects.map((project) => (
-              <div key={project.id}>{project.name}</div>
-            ))
-          ) : (
-            <p>There are no projects assigned to this robot</p>
-          )}
+        <div className="assigned">
+          <h2>Projects assigned to {robot.name}:</h2>
+          <div id="project-container">
+            {projects.length > 0 ? (
+              projects.map((project) => (
+                <div key={project.id} id="single-project">
+                  <div id="title">
+                    <h3>{project.title}</h3>
+                  </div>
+                  <div id="details">
+                    <p>Details:</p>
+                    <p>Description: {project.description}</p>
+                    <p>Deadline: {project.deadline}</p>
+                    <p>Priority: {project.priority}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>There are no projects assigned to this robot!</p>
+            )}
+          </div>
         </div>
       </div>
     );

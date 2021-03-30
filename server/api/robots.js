@@ -15,7 +15,16 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.id, {
-      include: Project,
+      include: [
+        {
+          model: Project,
+          through: {
+            where: {
+              robotId: req.params.id,
+            },
+          },
+        },
+      ],
     });
     res.send(robot);
   } catch (err) {

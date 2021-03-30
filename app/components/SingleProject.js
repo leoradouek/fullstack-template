@@ -9,25 +9,34 @@ class SingleProject extends React.Component {
 
   render() {
     const project = this.props.project;
-    const robots = this.props.robots || [];
-    console.log("PROPS", this.props);
-    console.log("ROBOTS", robots);
+    const robots = project.robots || [];
     return (
-      <div id="single-robot">
-        <div>
-          <h3>{project.description}</h3>
+      <div className="single-view">
+        <div className="single-main">
+          <p>{project.description}</p>
+          <div>
+            <p>Title: {project.title}</p>
+            <p>Deadline: {project.deadline}</p>
+            <p>Priority Level: {project.priority}</p>
+          </div>
         </div>
-        <div>
-          <p>Title: {project.title}</p>
-          <p>Deadline: {project.deadline}</p>
-          <p>Priority Level: {project.priority}</p>
-        </div>
-        <div>
+        <div className="assigned">
           <p>Robots assigned to this project:</p>
           {robots.length > 0 ? (
-            robots.map((robot) => <div key={robot.id}>{robot.name}</div>)
+            robots.map((robot) => (
+              <div key={robot.id} id="single-robot">
+                <div>
+                  <img src={robot.imageUrl} />
+                </div>
+                <div>
+                  <p>{robot.name}</p>
+                  <p>{robot.fuelType}</p>
+                  <p>{robot.fuelLevel}</p>
+                </div>
+              </div>
+            ))
           ) : (
-            <p>There are no robots assigned to this project</p>
+            <p>There are no robots assigned to this project!</p>
           )}
         </div>
       </div>
@@ -48,3 +57,5 @@ const mapDispatch = (dispatch) => {
 };
 
 export default connect(mapState, mapDispatch)(SingleProject);
+
+// robots.map((robot) => <div key={robot.id}>{robot.name}</div>
