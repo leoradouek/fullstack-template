@@ -20,17 +20,15 @@ export class AllProjects extends React.Component {
           {projects.length > 0 ? (
             projects.map((project) => (
               <div key={project.id} className="all-view">
-                <div id="title">
-                  <Link to={`/projects/${project.id}`}>
-                    <h3>{project.title}</h3>
-                  </Link>
-                </div>
-                <div id="details">
-                  <h3>Details</h3>
-                  <p>Description: {project.description}</p>
-                  <p>Deadline: {project.deadline}</p>
-                  <p>Priority: {project.priority}</p>
-                </div>
+                <Link to={`/projects/${project.id}`} key={project.id}>
+                  <h3>{project.title}</h3>
+                  <div>
+                    <h3>Details</h3>
+                    <p>Description: {project.description}</p>
+                    <p>Deadline: {project.deadline}</p>
+                    <p>Priority: {project.priority}</p>
+                  </div>
+                </Link>
               </div>
             ))
           ) : (
