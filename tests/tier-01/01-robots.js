@@ -38,7 +38,7 @@ import AllRobots, {
 import AllProjects from "../../app/components/AllProjects";
 import Routes from "../../app/components/Routes";
 
-describe("Tier One: Robots", () => {
+describe.only("Tier One: Robots", () => {
   // We'll use this array of robots as dummy data for testing purposes
   const robots = [
     { id: 1, name: "R2-D2", imageUrl: "/images/r2d2.png" },
@@ -59,7 +59,7 @@ describe("Tier One: Robots", () => {
 
     // This test is interested in the unconnected AllRobots component. It is
     // exported as a named export in app/components/AllRobots.js
-    xit("renders the robots passed in as props", () => {
+    it("renders the robots passed in as props", () => {
       const wrapper = mount(
         <UnconnectedAllRobots robots={robots} getRobots={getRobotsSpy} />
       );
@@ -74,7 +74,7 @@ describe("Tier One: Robots", () => {
       ]);
     });
 
-    xit("renders DIFFERENT robots passed in as props", () => {
+    it("renders DIFFERENT robots passed in as props", () => {
       const differentRobots = [
         {
           id: 3,
@@ -112,7 +112,7 @@ describe("Tier One: Robots", () => {
     // In a later step, we'll create a thunk, and map that thunk to AllRobots
     // as getRobots. For right now, we just need to be sure the component
     // calls it after it mounts.
-    xit("calls this.props.getRobots after mount", async () => {
+    it("calls this.props.getRobots after mount", async () => {
       mount(<UnconnectedAllRobots robots={robots} getRobots={getRobotsSpy} />);
       await waitForExpect(() => {
         expect(getRobotsSpy).to.have.been.called;
@@ -223,7 +223,7 @@ describe("Tier One: Robots", () => {
 
     // This test expects that you've set up a Route for AllRobots.
     // You should take a look at app/components/Routes.js
-    xit("renders <AllRobots /> at /robots", () => {
+    it("renders <AllRobots /> at /robots", () => {
       const wrapper = mount(
         <Provider store={store}>
           <MemoryRouter initialEntries={["/robots"]}>
