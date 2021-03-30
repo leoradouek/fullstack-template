@@ -16,21 +16,24 @@ export class AllProjects extends React.Component {
       <div>
         <h1>Technician Projects</h1>
         <div className="column">
-          {projects.map((project) => (
-            <div key={project.id} className="all-view">
-              <div id="title">
-                <h3>{project.title}</h3>
+          {projects.length > 0 ? (
+            projects.map((project) => (
+              <div key={project.id} className="all-view">
+                <div id="title">
+                  <h3>{project.title}</h3>
+                </div>
+                <div id="details">
+                  <h3>Details</h3>
+                  <p>Description: {project.description}</p>
+                  <p>Deadline: {project.deadline}</p>
+                  <p>Priority: {project.priority}</p>
+                </div>
               </div>
-              <div id="details">
-                <h3>Details</h3>
-                <p>Description: {project.description}</p>
-                <p>Deadline: {project.deadline}</p>
-                <p>Priority: {project.priority}</p>
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p> No Projects</p>
+          )}
         </div>
-        <p> *Priority: on a scale from 1-10</p>
       </div>
     );
   }

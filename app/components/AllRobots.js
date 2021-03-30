@@ -16,18 +16,22 @@ export class AllRobots extends React.Component {
       <div>
         <h1>Robot Technicians</h1>
         <div className="column">
-          {robots.map((robot) => (
-            <div key={robot.id} className="all-view">
-              <div id="title">
-                <h3>{robot.name}</h3>
+          {robots.length > 0 ? (
+            robots.map((robot) => (
+              <div key={robot.id} className="all-view">
+                <div id="image">
+                  <img src={robot.imageUrl} />
+                </div>
+                <div id="details">
+                  <h3>{robot.name}</h3>
+                  <p>Fuel Type: {robot.fuelType}</p>
+                  <p> Fuel Level: {robot.fuelLevel}</p>
+                </div>
               </div>
-              <div id="details">
-                <img src={robot.imageUrl} />
-                <p>Fuel Type: {robot.fuelType}</p>
-                <p> Fuel Level: {robot.fuelLevel}</p>
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p>No Robots</p>
+          )}
         </div>
       </div>
     );
