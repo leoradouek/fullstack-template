@@ -32,4 +32,15 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+//POST /api/projects/
+router.post("/", async (req, res, next) => {
+  try {
+    const newProject = await Project.create(req.body);
+    res.status(201).json(newProject);
+    return;
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
