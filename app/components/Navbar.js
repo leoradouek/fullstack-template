@@ -4,9 +4,17 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav>
-      <Link to="/">Homepage </Link>
-      <Link to="/robots">Robots </Link>
-      <Link to="/projects">Projects </Link>
+      <ul>
+        <li>
+          <Link to="/">Homepage </Link>
+        </li>
+        <li>
+          <Link to="/robots">Robots </Link>
+        </li>
+        <li>
+          <Link to="/projects">Projects </Link>
+        </li>
+      </ul>
     </nav>
   );
 };

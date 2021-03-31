@@ -13,31 +13,31 @@ class SingleProject extends React.Component {
     return (
       <div className="single-view">
         <div className="single-main">
-          <p>{project.description}</p>
-          <div>
+          <h3>{project.description}</h3>
+          <div id="details">
             <p>Title: {project.title}</p>
             <p>Deadline: {project.deadline}</p>
             <p>Priority Level: {project.priority}</p>
           </div>
         </div>
-        <div className="assigned">
+        <div className="single-assigned">
           <p>Robots assigned to this project:</p>
-          {robots.length > 0 ? (
-            robots.map((robot) => (
-              <div key={robot.id} id="single-robot">
-                <div>
+          <div>
+            {robots.length > 0 ? (
+              robots.map((robot) => (
+                <div key={robot.id} id="single-robot-project">
                   <img src={robot.imageUrl} />
+                  <div id="single-details">
+                    <p>Name: {robot.name}</p>
+                    <p>Fuel Type: {robot.fuelType}</p>
+                    <p>Fuel Level: {robot.fuelLevel}</p>
+                  </div>
                 </div>
-                <div>
-                  <p>{robot.name}</p>
-                  <p>{robot.fuelType}</p>
-                  <p>{robot.fuelLevel}</p>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>There are no robots assigned to this project!</p>
-          )}
+              ))
+            ) : (
+              <p>There are no robots assigned to this project!</p>
+            )}
+          </div>
         </div>
       </div>
     );

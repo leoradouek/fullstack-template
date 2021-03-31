@@ -10,31 +10,24 @@ class SingleRobot extends React.Component {
   render() {
     const robot = this.props.robot;
     const projects = robot.projects || [];
-    console.log("ROBOT", robot);
-    console.log("PROJECTS", projects);
     return (
       <div className="single-view">
         <div className="single-main">
-          <div>
-            <img src={robot.imageUrl} />
-          </div>
-          <div>
-            <p>{robot.name}</p>
-            <p>{robot.fuelType}</p>
-            <p>{robot.fuelLevel}</p>
+          <img src={robot.imageUrl} />
+          <div id="details">
+            <p>Name: {robot.name}</p>
+            <p>Fuel Type: {robot.fuelType}</p>
+            <p>Fuel Level: {robot.fuelLevel}</p>
           </div>
         </div>
-        <div className="assigned">
-          <h2>Projects assigned to {robot.name}:</h2>
-          <div id="project-container">
+        <div className="single-assigned">
+          <p>Projects assigned to {robot.name}:</p>
+          <div>
             {projects.length > 0 ? (
               projects.map((project) => (
-                <div key={project.id} id="single-project">
-                  <div id="title">
-                    <h3>{project.title}</h3>
-                  </div>
-                  <div id="details">
-                    <p>Details:</p>
+                <div key={project.id} id="single-robot-project">
+                  <h3>{project.title}</h3>
+                  <div id="single-details">
                     <p>Description: {project.description}</p>
                     <p>Deadline: {project.deadline}</p>
                     <p>Priority: {project.priority}</p>

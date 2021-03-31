@@ -24,7 +24,6 @@ module.exports = db.define("robot", {
   },
   imageUrl: {
     type: Sequelize.TEXT,
-    defaultValue:
-      "https://image.freepik.com/free-vector/robot-icon-bot-sign-design-chatbot-symbol-concept-voice-support-service-bot-online-support-bot-vector-stock-illustration_100456-34.jpg",
+    defaultValue: "https://robohash.org/default",
   },
 });

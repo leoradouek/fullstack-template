@@ -15,7 +15,7 @@ export class AllRobots extends React.Component {
     const robots = this.props.robots;
     return (
       <div>
-        <h1>Robot Technicians</h1>
+        <h1>All Robots</h1>
         <div className="column">
           {robots.length > 0 ? (
             robots.map((robot) => (

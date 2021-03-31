@@ -15,7 +15,7 @@ export class AllProjects extends React.Component {
     const projects = this.props.projects;
     return (
       <div>
-        <h1>Technician Projects</h1>
+        <h1>All Projects</h1>
         <div className="column">
           {projects.length > 0 ? (
             projects.map((project) => (
@@ -23,10 +23,8 @@ export class AllProjects extends React.Component {
                 <Link to={`/projects/${project.id}`} key={project.id}>
                   <h3>{project.title}</h3>
                   <div>
-                    <h3>Details</h3>
-                    <p>Description: {project.description}</p>
-                    <p>Deadline: {project.deadline}</p>
-                    <p>Priority: {project.priority}</p>
+                    <p>Description:</p>
+                    <p>{project.description}</p>
                   </div>
                 </Link>
               </div>
