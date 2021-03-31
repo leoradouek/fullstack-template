@@ -47,4 +47,15 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// DELETE /api/projects/:id
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.id);
+    await project.destroy();
+    res.send(project);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

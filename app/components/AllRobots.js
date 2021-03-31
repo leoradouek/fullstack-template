@@ -34,6 +34,7 @@ export class AllRobots extends React.Component {
                     <p> Fuel Level: {robot.fuelLevel}</p>
                   </div>
                 </Link>
+                <button>x</button>
               </div>
             ))
           ) : (
