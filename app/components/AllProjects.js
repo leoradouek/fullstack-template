@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchProjects } from "../redux/projects";
+import { fetchProjects, deleteProject } from "../redux/projects";
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -13,27 +13,42 @@ export class AllProjects extends React.Component {
 
   render() {
     const projects = this.props.projects;
+
     return (
-      <div>
-        <h1>All Projects</h1>
-        <Link to="/projects/add">
-          <button>Add Project</button>
-        </Link>
-        <div className="column">
+      <div className="all-view-container">
+        <div className="all-top">
+          <h1>All Projects</h1>
+          <Link to="/projects/add">
+            <button type="button" className="add">
+              Add Project <i className="fa fa-sticky-note-o"></i>
+            </button>
+          </Link>
+        </div>
+        <div className="all-bottom">
           {projects.length > 0 ? (
             projects.map((project) => (
-              <div key={project.id} className="all-view">
-                <Link to={`/projects/${project.id}`} key={project.id}>
-                  <h3>{project.title}</h3>
-                  <div>
+              <div key={project.id} className="single">
+                <div>
+                  <Link to={`/projects/${project.id}`} key={project.id}>
+                    <h3>{project.title}</h3>
+                  </Link>
+                  <div className="description">
                     <p>Description:</p>
                     <p>{project.description}</p>
                   </div>
-                </Link>
+                </div>
+
+                <button
+                  type="button"
+                  className="delete"
+                  onClick={() => this.props.removeProject(project.id)}
+                >
+                  <i className="fa fa-trash"></i>
+                </button>
               </div>
             ))
           ) : (
-            <p> No Projects</p>
+            <h2> No Projects</h2>
           )}
         </div>
       </div>
@@ -50,6 +65,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     getProjects: () => dispatch(fetchProjects()),
+    removeProject: (project) => dispatch(deleteProject(project)),
   };
 };
 

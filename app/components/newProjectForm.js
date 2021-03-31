@@ -7,6 +7,8 @@ class NewProjectForm extends React.Component {
     super();
     this.state = {
       title: "",
+      description: "",
+      priority: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,13 +24,42 @@ class NewProjectForm extends React.Component {
   }
 
   render() {
-    const { title } = this.state;
+    const { title, description, priority } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="title">Project Title:</label>
-        <input name="title" value={title} onChange={this.handleChange} />
-        <button type="submit">Add Project</button>
+        <div className="form-container">
+          <h1>New Project</h1>
+          <p>Please fill out this form to create a new project:</p>
+
+          <label htmlFor="title">Project Title:</label>
+          <input
+            name="title"
+            value={title}
+            onChange={this.handleChange}
+            placeholder="Name"
+          />
+
+          <label htmlFor="description">Description:</label>
+          <input
+            name="description"
+            value={description}
+            onChange={this.handleChange}
+            placeholder="Description of project"
+          />
+
+          <label htmlFor="priority">Priority Level:</label>
+          <input
+            name="priority"
+            value={priority}
+            onChange={this.handleChange}
+            placeholder="Number between 1-10"
+          />
+
+          <button type="submit" className="submit">
+            Add Project
+          </button>
+        </div>
       </form>
     );
   }

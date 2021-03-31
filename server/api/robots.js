@@ -38,6 +38,8 @@ router.post("/", async (req, res, next) => {
     console.log("what is req.body", req.body);
     const robot = {
       name: req.body.robotName,
+      fuelType: req.body.fuelType,
+      fuelLevel: req.body.fuelLevel,
     };
 
     const newRobot = await Robot.create(robot);

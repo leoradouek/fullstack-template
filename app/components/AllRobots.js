@@ -15,35 +15,37 @@ export class AllRobots extends React.Component {
     const robots = this.props.robots;
 
     return (
-      <div>
-        <h1>All Robots</h1>
-        <Link to="/robots/add">
-          <button>Add Robot</button>
-        </Link>
-        <div className="column">
+      <div className="all-view-container">
+        <div className="all-top">
+          <h1>All Robots</h1>
+          <Link to="/robots/add">
+            <button type="button" className="add">
+              Add Robot <i className="fa fa-user"></i>
+            </button>
+          </Link>
+        </div>
+        <div className="all-bottom">
           {robots.length > 0 ? (
             robots.map((robot) => (
-              <div key={robot.id} className="all-view">
-                <Link to={`/robots/${robot.id}`}>
-                  <div id="image">
+              <div key={robot.id} className="single">
+                <div className="description">
+                  <Link to={`/robots/${robot.id}`}>
                     <img src={robot.imageUrl} />
-                  </div>
-                  <div id="details">
-                    <h3>{robot.name}</h3>
-                    <p>Fuel Type: {robot.fuelType}</p>
-                    <p>Fuel Level: {robot.fuelLevel}</p>
-                  </div>
-                </Link>
+                  </Link>
+                  <h2>{robot.name}</h2>
+                </div>
+
                 <button
                   type="button"
+                  className="delete"
                   onClick={() => this.props.removeRobot(robot.id)}
                 >
-                  x
+                  <i className="fa fa-trash"></i>
                 </button>
               </div>
             ))
           ) : (
-            <p>No Robots</p>
+            <h2>No Robots</h2>
           )}
         </div>
       </div>

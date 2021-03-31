@@ -8,111 +8,183 @@
   font-family: arial, sans-serif;
 }
 
-body {
-  background: linear-gradient(#ffffff, #c0c0c0);
+body,
+html {
+  height: 100%;
 }
 
-h1 {
-  font-size: 25px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  background-color: cornflowerblue;
-  text-align: center;
-  border: 2px dotted navy;
-}
-
-h2 {
-  font-size: 18px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-
-  text-align: center;
-}
-
-h3 {
-  font-size: 17px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: rgb(85, 85, 168);
-  text-align: center;
-  text-decoration: underline;
-}
-
+/* navbar */
 nav {
-  background-color: #eb0a0a;
-  height: 80px;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-nav a {
-  color: white;
-  text-decoration: underline;
-}
-
-nav a:hover {
-  background-color: white;
-  color: blue;
-}
-
-main {
-  text-align: center;
-  padding: 10px;
-}
-
-main div {
-  background-color: rgb(6, 26, 39);
-  margin: auto;
-  width: 50%;
-  padding: 20px;
-  color: white;
-}
-
-main img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  border: 1px solid navy;
-  border-radius: 4px;
-  padding: 5px;
-}
-
-main p {
-  font-family: Cambria, Cochin, Georgia, Times, "Times  New Roman", serif;
-  font-size: 20px;
+  background-color: #1e2f50;
+  padding: 14px;
+  position: sticky;
+  top: 0;
 }
 
 ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: inline;
+  color: aliceblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: Trirong, Cambria, Cochin, Georgia, Times, "Times New Roman",
+    serif;
+}
+
+li a:hover {
+  color: rgb(186, 221, 248);
+}
+
+/* homepage */
+main {
+  text-align: center;
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
-.all-view {
-  border: 2px solid rgb(23, 3, 136);
-  background-color: rgba(175, 175, 233, 0.151);
-  flex-basis: 25%;
+main div {
+  width: 100%;
+  height: 800px;
+  background-image: url("https://images.theconversation.com/files/191772/original/file-20171025-5822-1wixns4.png?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop");
+  background-size: cover;
+  padding: 50px;
+}
+
+main p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  background-color: aliceblue;
+  color: red;
+  padding: 30px;
+}
+
+/* all-view */
+
+.all-view-container {
   display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
 }
 
-.all-view p {
-  text-align: start;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 13px;
+.all-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 
-.all-view img {
-  border-radius: 50%;
-  background-color: white;
-  width: 30%;
+h1 {
+  font-size: 25px;
+  font-family: Trirong, Cambria, Cochin, Georgia, Times, "Times New Roman",
+    serif;
+  text-align: center;
+  color: rgb(115, 150, 247);
 }
 
-.column {
+.add {
+  background-color: dodgerblue;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  cursor: pointer;
+  margin: 10px;
+  height: fit-content;
+}
+
+.add:hover {
+  background-color: royalblue;
+}
+
+.add a {
+  text-decoration: none;
+}
+
+.all-bottom {
+  display: flex;
+  text-decoration: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.single {
+  flex-basis: 30%;
+  border: 1px solid black;
+  margin: 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.all-bottom img {
+  border-radius: 50%;
+  background-color: white;
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.all-bottom img:hover {
+  box-shadow: 0 0 20px rgb(150, 188, 219);
+}
+
+.description h2 {
+  font-size: 15px;
+  font-family: Trirong, Cambria, Cochin, Georgia, Times, "Times New Roman",
+    serif;
+  text-align: center;
+  padding: 10px;
+  color: rgb(60, 113, 156);
+}
+
+.description p {
+  font-size: 15px;
+  font-family: Trirong, Cambria, Cochin, Georgia, Times, "Times New Roman",
+    serif;
+  text-align: left;
+  padding: 10px;
+  color: rgb(60, 113, 156);
+}
+
+h3 {
+  font-size: 22px;
+  font-family: Trirong, Cambria, Cochin, Georgia, Times, "Times New Roman",
+    serif;
+  color: rgb(14, 47, 138);
+  text-align: center;
+}
+
+h3:hover {
+  color: rgb(115, 150, 247);
+}
+
+.delete {
+  background-color: dodgerblue;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  cursor: pointer;
+  margin: 10px;
+  height: fit-content;
+  align-self: flex-end;
+}
+
+.delete:hover {
+  background-color: royalblue;
 }
 
 /* single view */
@@ -188,3 +260,62 @@ ul {
 #single-details {
   padding: 20px;
 }
+
+/* form */
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.form-container h1 {
+  text-align: left;
+}
+
+.form-container p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  color: rgb(150, 188, 219);
+  font-style: italic;
+}
+
+.form-container label {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(150, 188, 219);
+}
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background-color: rgb(229, 235, 243);
+}
+
+input:focus {
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.submit {
+  background-color: rgb(115, 150, 247);
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.submit:hover {
+  opacity: 1;
+}
+
+/* .column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+} */

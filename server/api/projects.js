@@ -37,6 +37,8 @@ router.post("/", async (req, res, next) => {
   try {
     const project = {
       title: req.body.title,
+      description: req.body.description,
+      prioty: req.body.priority,
     };
 
     const newProject = await Project.create(project);
