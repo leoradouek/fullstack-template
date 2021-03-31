@@ -2,12 +2,28 @@ import axios from "axios";
 
 // action type
 const SET_ROBOTS = "SET_ROBOTS";
+const CREATE_ROBOT = "CREATE_ROBOT";
+const DELETE_ROBOT = "DELETE_ROBOT";
 
 // action creator
 export const setRobots = (robots) => {
   return {
     type: SET_ROBOTS,
     robots,
+  };
+};
+
+export const _createRobot = (robot) => {
+  return {
+    type: CREATE_ROBOT,
+    robot,
+  };
+};
+
+export const _deleteRobot = (robot) => {
+  return {
+    type: DELETE_ROBOT,
+    robot,
   };
 };
 
@@ -24,11 +40,30 @@ export const fetchRobots = () => {
   };
 };
 
+export const createRobot = (robot, history) => {
+  return async (dispatch) => {
+    const { data } = await axios.post("/api/robots", robot);
+    dispatch(_createRobot(data));
+    history.push("/robots");
+  };
+};
+
+export const deleteRobot = (id) => {
+  return async (dispatch) => {
+    const { data } = await axios.delete(`/api/robots/${id}`);
+    dispatch(_deleteRobot(data));
+  };
+};
+
 // reducer
 export default (state = [], action) => {
   switch (action.type) {
     case SET_ROBOTS:
       return action.robots;
+    case CREATE_ROBOT:
+      return [...state, action.robot];
+    case DELETE_ROBOT:
+      return state.filter((robot) => robot.id !== action.robot.id);
     default:
       return state;
   }

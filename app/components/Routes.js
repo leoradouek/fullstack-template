@@ -9,7 +9,7 @@ import AllProjects from "./AllProjects";
 import SingleRobot from "./SingleRobot";
 import SingleProject from "./SingleProject";
 import NewRobotForm from "./NewRobotForm";
-import NewProjectForm from "./newProjectForm";
+import NewProjectForm from "./NewProjectForm";
 
 const Routes = () => {
   return (

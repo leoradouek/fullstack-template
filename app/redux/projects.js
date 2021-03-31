@@ -2,6 +2,7 @@ import axios from "axios";
 
 // action type
 const SET_PROJECTS = "SET_PROJECTS";
+const CREATE_PROJECT = "CREATE_PROJECT";
 
 // action creator
 export const setProjects = (projects) => {
@@ -11,9 +12,15 @@ export const setProjects = (projects) => {
   };
 };
 
-// thunk creator
+export const _createProject = (project) => {
+  return {
+    type: CREATE_PROJECT,
+    project,
+  };
+};
+
+// thunk creators
 export const fetchProjects = () => {
-  // thunk
   return async (dispatch) => {
     try {
       const { data } = await axios.get("/api/projects");
@@ -24,11 +31,21 @@ export const fetchProjects = () => {
   };
 };
 
+export const createProject = (project, history) => {
+  return async (dispatch) => {
+    const { data } = await axios.post("/api/projects", project);
+    dispatch(_createProject(data));
+    history.push("/projects");
+  };
+};
+
 // reducer
 export default (state = [], action) => {
   switch (action.type) {
     case SET_PROJECTS:
       return action.projects;
+    case CREATE_PROJECT:
+      return [...state, action.project];
     default:
       return state;
   }

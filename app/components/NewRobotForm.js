@@ -1,5 +1,5 @@
 import React from "react";
-import { createRobot } from "../redux/singleRobot";
+import { createRobot } from "../redux/robots";
 import { connect } from "react-redux";
 
 class NewRobotForm extends React.Component {

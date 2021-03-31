@@ -1,5 +1,5 @@
 import React from "react";
-import { createProject } from "../redux/singleProject";
+import { createProject } from "../redux/projects";
 import { connect } from "react-redux";
 
 class NewProjectForm extends React.Component {
