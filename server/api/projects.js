@@ -35,7 +35,11 @@ router.get("/:id", async (req, res, next) => {
 //POST /api/projects/
 router.post("/", async (req, res, next) => {
   try {
-    const newProject = await Project.create(req.body);
+    const project = {
+      title: req.body.title,
+    };
+
+    const newProject = await Project.create(project);
     res.status(201).json(newProject);
     return;
   } catch (err) {

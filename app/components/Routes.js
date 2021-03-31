@@ -8,6 +8,7 @@ import AllRobots from "./AllRobots";
 import AllProjects from "./AllProjects";
 import SingleRobot from "./SingleRobot";
 import SingleProject from "./SingleProject";
+import NewRobotForm from "./NewRobotForm";
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/robots" component={AllRobots} />
+          <Route path="/robots/add" component={NewRobotForm} />
           <Route path="/robots/:id" component={SingleRobot} />
           <Route exact path="/projects" component={AllProjects} />
           <Route path="/projects/:id" component={SingleProject} />

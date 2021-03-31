@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchRobots } from "../redux/robots";
+import NewRobotForm from "./NewRobotForm";
 
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -16,6 +17,9 @@ export class AllRobots extends React.Component {
     return (
       <div>
         <h1>All Robots</h1>
+        <Link to="/robots/add">
+          <button>Add Robot</button>
+        </Link>
         <div className="column">
           {robots.length > 0 ? (
             robots.map((robot) => (
