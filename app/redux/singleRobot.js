@@ -1,9 +1,10 @@
 import axios from "axios";
 
-// action type
+// action types
 const SET_ROBOT = "SET_ROBOT";
+const CREATE_ROBOT = "CREATE_ROBOT";
 
-// action creator
+// action creators
 export const setRobot = (robot) => {
   return {
     type: SET_ROBOT,
@@ -11,9 +12,15 @@ export const setRobot = (robot) => {
   };
 };
 
-// thunk creator
+export const _createRobot = (robot) => {
+  return {
+    type: CREATE_ROBOT,
+    robot,
+  };
+};
+
+// thunk creators
 export const fetchRobot = (id) => {
-  //thunk
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/api/robots/${id}`);
@@ -24,11 +31,22 @@ export const fetchRobot = (id) => {
   };
 };
 
+export const createRobot = (robot, history) => {
+  return async (dispatch) => {
+    const { data } = await axios.post("/api/robots", robot);
+    dispatch(_createRobot(data));
+    history.push("/robots");
+  };
+};
+
 // reducer
 export default (state = {}, action) => {
   switch (action.type) {
     case SET_ROBOT:
       return action.robot;
+    case CREATE_ROBOT:
+      // return action.robot;
+      return { ...state, robot: action.robot };
     default:
       return state;
   }

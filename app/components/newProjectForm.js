@@ -1,12 +1,12 @@
 import React from "react";
-import { createRobot } from "../redux/singleRobot";
+import { createProject } from "../redux/singleProject";
 import { connect } from "react-redux";
 
-class NewRobotForm extends React.Component {
+class NewProjectForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      robotName: "",
+      title: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,24 +22,20 @@ class NewRobotForm extends React.Component {
   }
 
   render() {
-    const { robotName } = this.state;
+    const { title } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="robotName">Robot Name:</label>
-        <input
-          name="robotName"
-          value={robotName}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Add Robot</button>
+        <label htmlFor="title">Project Title:</label>
+        <input name="title" value={title} onChange={this.handleChange} />
+        <button type="submit">Add Project</button>
       </form>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-  create: (robot) => dispatch(createRobot(robot, history)),
+  create: (project) => dispatch(createProject(project, history)),
 });
 
-export default connect(null, mapDispatchToProps)(NewRobotForm);
+export default connect(null, mapDispatchToProps)(NewProjectForm);

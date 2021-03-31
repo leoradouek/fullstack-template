@@ -16,6 +16,9 @@ export class AllProjects extends React.Component {
     return (
       <div>
         <h1>All Projects</h1>
+        <Link to="/projects/add">
+          <button>Add Project</button>
+        </Link>
         <div className="column">
           {projects.length > 0 ? (
             projects.map((project) => (

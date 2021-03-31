@@ -92,7 +92,7 @@ ul {
 .all-view {
   border: 2px solid rgb(23, 3, 136);
   background-color: rgba(175, 175, 233, 0.151);
-  flex-basis: 33%;
+  flex-basis: 25%;
   display: flex;
 }
 
@@ -112,6 +112,7 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 /* single view */
