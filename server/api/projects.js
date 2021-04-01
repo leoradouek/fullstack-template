@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { Project, Robot } = require("../db");
 
-// GET / api/projects
+// *** GET ***
+
 router.get("/", async (req, res, next) => {
   try {
     const projects = await Project.findAll();
@@ -11,7 +12,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// GET /api/projects/:id
 router.get("/:id", async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.id, {
@@ -32,7 +32,8 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-//POST /api/projects/
+// *** POST ***
+
 router.post("/", async (req, res, next) => {
   try {
     const project = {
@@ -49,12 +50,24 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// DELETE /api/projects/:id
+// *** DELETE ***
+
 router.delete("/:id", async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.id);
     await project.destroy();
     res.send(project);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// *** PUT ***
+
+router.put("/:id", async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.id);
+    res.send(await project.update(req.body));
   } catch (error) {
     next(error);
   }

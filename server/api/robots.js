@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { Robot, Project } = require("../db");
 
-// GET / api/robots
+// *** GET ***
+
 router.get("/", async (req, res, next) => {
   try {
     const robots = await Robot.findAll();
@@ -11,7 +12,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// GET /api/robots/:id
 router.get("/:id", async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.id, {
@@ -32,7 +32,8 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-//POST /api/robots/
+// *** POST ***
+
 router.post("/", async (req, res, next) => {
   try {
     console.log("what is req.body", req.body);
@@ -57,22 +58,40 @@ router.post("/", async (req, res, next) => {
 //       },
 //     });
 //     if (!doesRobotExist) {
-//       const newRobot = await Robot.create(req.body);
+//       const robot = {
+//         name: req.body.robotName,
+//         fuelType: req.body.fuelType,
+//         fuelLevel: req.body.fuelLevel,
+//       };
+//       const newRobot = await Robot.create(robot);
 //       res.status(201).json(newRobot);
 //       return;
 //     }
-//     res.sendStatus(409);
+//     res.status(409).send("not found");
+//     //res.sendStatus(409);
 //   } catch (err) {
 //     next(err);
 //   }
 // });
 
-// DELETE /api/robots/:id
+// *** DELETE ***
+
 router.delete("/:id", async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.id);
     await robot.destroy();
     res.send(robot);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// *** PUT ***
+
+router.put("/:id", async (req, res, next) => {
+  try {
+    const robot = await Robot.findByPk(req.params.id);
+    res.send(await robot.update(req.body));
   } catch (error) {
     next(error);
   }
