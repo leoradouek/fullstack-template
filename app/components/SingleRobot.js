@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchRobot } from "../redux/singleRobot";
 
 class SingleRobot extends React.Component {
@@ -11,17 +12,23 @@ class SingleRobot extends React.Component {
     const robot = this.props.robot;
     const projects = robot.projects || [];
     return (
-      <div className="single-view">
+      <div className="single-view-container">
         <div className="single-main">
           <img src={robot.imageUrl} />
           <div id="details">
             <p>Name: {robot.name}</p>
             <p>Fuel Type: {robot.fuelType}</p>
             <p>Fuel Level: {robot.fuelLevel}</p>
+            <Link to={`/robots/update/${robot.id}`}>
+              <button type="button" className="update">
+                Edit <i className="fa fa-edit"></i>
+              </button>
+            </Link>
           </div>
         </div>
+
         <div className="single-assigned">
-          <p>Projects assigned to {robot.name}:</p>
+          <h4>Projects assigned to {robot.name}:</h4>
           <div>
             {projects.length > 0 ? (
               projects.map((project) => (
@@ -32,10 +39,17 @@ class SingleRobot extends React.Component {
                     <p>Deadline: {project.deadline}</p>
                     <p>Priority: {project.priority}</p>
                   </div>
+                  <button
+                    type="button"
+                    className="delete"
+                    onClick={() => this.props.removeRobot(robot.id)}
+                  >
+                    Unassign
+                  </button>
                 </div>
               ))
             ) : (
-              <p>There are no projects assigned to this robot!</p>
+              <p>{robot.name} does not have any projects assigned</p>
             )}
           </div>
         </div>

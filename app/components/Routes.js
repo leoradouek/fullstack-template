@@ -10,6 +10,7 @@ import SingleRobot from "./SingleRobot";
 import SingleProject from "./SingleProject";
 import NewRobotForm from "./NewRobotForm";
 import NewProjectForm from "./NewProjectForm";
+import UpdateRobotForm from "./UpdateRobotForm";
 
 const Routes = () => {
   return (
@@ -20,6 +21,7 @@ const Routes = () => {
           <Route exact path="/" component={Homepage} />
           <Route exact path="/robots" component={AllRobots} />
           <Route path="/robots/add" component={NewRobotForm} />
+          <Route path="/robots/update/:id" component={UpdateRobotForm} />
           <Route path="/robots/:id" component={SingleRobot} />
           <Route exact path="/projects" component={AllProjects} />
           <Route path="/projects/add" component={NewProjectForm} />

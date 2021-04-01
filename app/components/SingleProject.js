@@ -16,12 +16,12 @@ class SingleProject extends React.Component {
           <h3>{project.description}</h3>
           <div id="details">
             <p>Title: {project.title}</p>
-            <p>Deadline: {project.deadline}</p>
-            <p>Priority Level: {project.priority}</p>
+            <p>Due on {project.deadline}</p>
+            <p>Priority Level {project.priority}</p>
           </div>
         </div>
         <div className="single-assigned">
-          <p>Robots assigned to this project:</p>
+          <h4>Robots assigned to this project:</h4>
           <div>
             {robots.length > 0 ? (
               robots.map((robot) => (
@@ -35,7 +35,7 @@ class SingleProject extends React.Component {
                 </div>
               ))
             ) : (
-              <p>There are no robots assigned to this project!</p>
+              <p>There are currently no robots assigned to this project</p>
             )}
           </div>
         </div>

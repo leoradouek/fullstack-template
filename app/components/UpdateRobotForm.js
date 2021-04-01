@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createRobot } from "../redux/robots";
+import { updateRobot } from "../redux/robots";
+import { fetchRobot, setRobot } from "../redux/singleRobot";
 
-class NewRobotForm extends React.Component {
-  constructor() {
-    super();
+class UpdateRobotForm extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       robotName: "",
       fuelType: "",
@@ -14,22 +15,47 @@ class NewRobotForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.fetch(id);
+    console.log("MOUNT state:", this.state);
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log("UPDATE state:", this.state);
+    if (prevProps.robot.id !== this.props.robot.id) {
+      this.setState({
+        robotName: this.props.robot.name || "",
+        fuelType: this.props.robot.fuelType || "",
+        fuelLevel: this.props.robot.fuelLevel || "",
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.clear();
+  }
+
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.create({ ...this.state });
+    this.props.update({ ...this.props.robot, ...this.state });
   }
 
   render() {
     const { robotName, fuelType, fuelLevel } = this.state;
 
+    console.log("RENDER PROPS", this.props);
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-container">
-          <h1>New Robot Employee</h1>
+          <h1>Update Robot</h1>
           <p>Please fill out this form to create a new robot:</p>
 
           <label htmlFor="robotName">Robot Name: </label>
@@ -37,7 +63,6 @@ class NewRobotForm extends React.Component {
             name="robotName"
             value={robotName}
             onChange={this.handleChange}
-            placeholder="Name"
           />
 
           <label htmlFor="robotName">Fuel Type: </label>
@@ -45,27 +70,17 @@ class NewRobotForm extends React.Component {
             name="fuelType"
             value={fuelType}
             onChange={this.handleChange}
-            placeholder="Electric, Diesel, or Gas"
           />
-
-          {/* <label htmlFor="fuelType">Fuel Type: </label>
-          <select name="fuelType" value={fuelType} onChange={this.handleChange}>
-            <option>---Fuel Type---</option>
-            <option>Diesel</option>
-            <option>Electric</option>
-            <option>Gas</option>
-          </select> */}
 
           <label htmlFor="fuelLevel">Fuel Level: </label>
           <input
             name="fuelLevel"
             value={fuelLevel}
             onChange={this.handleChange}
-            placeholder="Number between 1-100"
           />
 
           <button type="submit" className="submit">
-            Add Robot
+            Save Changes
           </button>
         </div>
       </form>
@@ -73,8 +88,14 @@ class NewRobotForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, { history }) => ({
-  create: (robot) => dispatch(createRobot(robot, history)),
+const mapStateToProps = ({ robot }) => ({
+  robot,
 });
 
-export default connect(null, mapDispatchToProps)(NewRobotForm);
+const mapDispatchToProps = (dispatch, { history }) => ({
+  update: (robot) => dispatch(updateRobot(robot, history)),
+  fetch: (id) => dispatch(fetchRobot(id)),
+  clear: () => dispatch(setRobot({})),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateRobotForm);

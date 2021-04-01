@@ -45,7 +45,9 @@ export class AllRobots extends React.Component {
               </div>
             ))
           ) : (
-            <h2>No Robots</h2>
+            <h4>
+              There are no robot employees. Speak to HR about hiring some.
+            </h4>
           )}
         </div>
       </div>

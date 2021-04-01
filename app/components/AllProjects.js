@@ -48,7 +48,7 @@ export class AllProjects extends React.Component {
               </div>
             ))
           ) : (
-            <h2> No Projects</h2>
+            <h4>There are no projects. Seems odd.</h4>
           )}
         </div>
       </div>

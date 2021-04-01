@@ -4,6 +4,7 @@ import axios from "axios";
 const SET_ROBOTS = "SET_ROBOTS";
 const CREATE_ROBOT = "CREATE_ROBOT";
 const DELETE_ROBOT = "DELETE_ROBOT";
+const UPDATE_ROBOT = "UPDATE_ROBOT";
 
 // action creator
 export const setRobots = (robots) => {
@@ -23,6 +24,13 @@ export const _createRobot = (robot) => {
 export const _deleteRobot = (robot) => {
   return {
     type: DELETE_ROBOT,
+    robot,
+  };
+};
+
+export const _updateRobot = (robot) => {
+  return {
+    type: UPDATE_ROBOT,
     robot,
   };
 };
@@ -55,6 +63,14 @@ export const deleteRobot = (id) => {
   };
 };
 
+export const updateRobot = (robot, history) => {
+  return async (dispatch) => {
+    const { data } = await axios.put(`api/robots/update/${robot.id}`, robot);
+    dispatch(_updateRobot(data));
+    history.push("/robots");
+  };
+};
+
 // reducer
 export default (state = [], action) => {
   switch (action.type) {
@@ -64,6 +80,10 @@ export default (state = [], action) => {
       return [...state, action.robot];
     case DELETE_ROBOT:
       return state.filter((robot) => robot.id !== action.robot.id);
+    case UPDATE_ROBOT:
+      return state.map((robot) =>
+        robot.id === action.robot.id ? action.robot : robot
+      );
     default:
       return state;
   }

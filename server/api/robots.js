@@ -36,7 +36,6 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    console.log("what is req.body", req.body);
     const robot = {
       name: req.body.robotName,
       fuelType: req.body.fuelType,
@@ -88,7 +87,7 @@ router.delete("/:id", async (req, res, next) => {
 
 // *** PUT ***
 
-router.put("/:id", async (req, res, next) => {
+router.put("/update/:id", async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.id);
     res.send(await robot.update(req.body));
