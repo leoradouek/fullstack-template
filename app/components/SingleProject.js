@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchProject } from "../redux/singleProject";
 import RobotsAssigned from "./RobotAssigned";
 
 class SingleProject extends React.Component {
   componentDidMount() {
-    this.props.getProject(this.props.match.params.id);
+    this.props.fetch(this.props.match.params.id);
   }
 
   render() {
@@ -19,6 +20,11 @@ class SingleProject extends React.Component {
             <p>Title: {project.title}</p>
             <p>Due on {project.deadline}</p>
             <p>Priority Level {project.priority}</p>
+            <Link to={`/projects/update/${project.id}`}>
+              <button type="button" className="update">
+                Edit <i className="fa fa-edit"></i>
+              </button>
+            </Link>
           </div>
         </div>
         <div className="single-assigned">
@@ -46,10 +52,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getProject: (id) => dispatch(fetchProject(id)),
+    fetch: (id) => dispatch(fetchProject(id)),
   };
 };
 
 export default connect(mapState, mapDispatch)(SingleProject);
-
-// robots.map((robot) => <div key={robot.id}>{robot.name}</div>

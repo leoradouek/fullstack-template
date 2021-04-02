@@ -56,7 +56,7 @@ class UpdateRobotForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div className="form-container">
           <h1>Update Robot</h1>
-          <p>Please fill out this form to create a new robot:</p>
+          <p>Please fill out this form to edit robot:</p>
 
           <label htmlFor="robotName">Robot Name: </label>
           <input
@@ -65,7 +65,7 @@ class UpdateRobotForm extends React.Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="robotName">Fuel Type: </label>
+          <label htmlFor="fuelType">Fuel Type: </label>
           <input
             name="fuelType"
             value={fuelType}

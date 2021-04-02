@@ -11,6 +11,7 @@ import SingleProject from "./SingleProject";
 import NewRobotForm from "./NewRobotForm";
 import NewProjectForm from "./NewProjectForm";
 import UpdateRobotForm from "./UpdateRobotForm";
+import UpdateProjectForm from "./UpdateProjectForm";
 
 const Routes = () => {
   return (
@@ -25,6 +26,7 @@ const Routes = () => {
           <Route path="/robots/:id" component={SingleRobot} />
           <Route exact path="/projects" component={AllProjects} />
           <Route path="/projects/add" component={NewProjectForm} />
+          <Route path="/projects/update/:id" component={UpdateProjectForm} />
           <Route path="/projects/:id" component={SingleProject} />
         </Switch>
       </div>

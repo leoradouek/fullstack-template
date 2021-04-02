@@ -4,6 +4,7 @@ import axios from "axios";
 const SET_PROJECTS = "SET_PROJECTS";
 const CREATE_PROJECT = "CREATE_PROJECT";
 const DELETE_PROJECT = "DELETE_PROJECT";
+const UPDATE_PROJECT = "UPDATE_PROJECT";
 
 // action creator
 export const setProjects = (projects) => {
@@ -23,6 +24,13 @@ export const _createProject = (project) => {
 export const _deleteProject = (project) => {
   return {
     type: DELETE_PROJECT,
+    project,
+  };
+};
+
+export const _updateProject = (project) => {
+  return {
+    type: UPDATE_PROJECT,
     project,
   };
 };
@@ -54,6 +62,14 @@ export const deleteProject = (id) => {
   };
 };
 
+export const updateProject = (project, history) => {
+  return async (dispatch) => {
+    const { data } = await axios.put(`api/robots/${project.id}`, project);
+    dispatch(_updateProject(data));
+    // history.push("/projects");
+  };
+};
+
 // reducer
 export default (state = [], action) => {
   switch (action.type) {
@@ -63,6 +79,10 @@ export default (state = [], action) => {
       return [...state, action.project];
     case DELETE_PROJECT:
       return state.filter((project) => project.id !== action.project.id);
+    case UPDATE_PROJECT:
+      return state.map((project) =>
+        project.id === action.project.id ? action.project : project
+      );
     default:
       return state;
   }
