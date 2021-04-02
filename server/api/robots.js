@@ -87,7 +87,7 @@ router.delete("/:id", async (req, res, next) => {
 
 // *** PUT ***
 
-router.put("/update/:id", async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.id);
     res.send(await robot.update(req.body));

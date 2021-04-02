@@ -63,11 +63,10 @@ export const deleteRobot = (id) => {
   };
 };
 
-export const updateRobot = (robot, history) => {
+export const updateRobot = (robot) => {
   return async (dispatch) => {
-    const { data } = await axios.put(`api/robots/update/${robot.id}`, robot);
+    const { data } = await axios.put(`api/robots/${robot.id}`, robot);
     dispatch(_updateRobot(data));
-    history.push("/robots");
   };
 };
 

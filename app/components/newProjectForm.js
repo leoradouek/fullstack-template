@@ -55,7 +55,6 @@ class NewProjectForm extends React.Component {
             onChange={this.handleChange}
             placeholder="Number between 1-10"
           />
-
           <button type="submit" className="submit">
             Add Project
           </button>

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchProject } from "../redux/singleProject";
+import RobotsAssigned from "./RobotAssigned";
 
 class SingleProject extends React.Component {
   componentDidMount() {
@@ -25,14 +26,7 @@ class SingleProject extends React.Component {
           <div>
             {robots.length > 0 ? (
               robots.map((robot) => (
-                <div key={robot.id} id="single-robot-project">
-                  <img src={robot.imageUrl} />
-                  <div id="single-details">
-                    <p>Name: {robot.name}</p>
-                    <p>Fuel Type: {robot.fuelType}</p>
-                    <p>Fuel Level: {robot.fuelLevel}</p>
-                  </div>
-                </div>
+                <RobotsAssigned key={robot.id} robot={robot} />
               ))
             ) : (
               <p>There are currently no robots assigned to this project</p>

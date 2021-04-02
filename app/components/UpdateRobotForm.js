@@ -44,7 +44,7 @@ class UpdateRobotForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.update({ ...this.props.robot, ...this.state });
+    this.props.editRobot({ ...this.props.robot, ...this.state });
   }
 
   render() {
@@ -93,7 +93,7 @@ const mapStateToProps = ({ robot }) => ({
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-  update: (robot) => dispatch(updateRobot(robot, history)),
+  editRobot: (robot) => dispatch(updateRobot(robot, history)),
   fetch: (id) => dispatch(fetchRobot(id)),
   clear: () => dispatch(setRobot({})),
 });

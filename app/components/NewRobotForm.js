@@ -40,25 +40,19 @@ class NewRobotForm extends React.Component {
             placeholder="Name"
           />
 
-          <label htmlFor="robotName">Fuel Type: </label>
-          <input
-            name="fuelType"
-            value={fuelType}
-            onChange={this.handleChange}
-            placeholder="Electric, Diesel, or Gas"
-          />
-
-          {/* <label htmlFor="fuelType">Fuel Type: </label>
+          <label htmlFor="fuelType">Fuel Type: </label>
           <select name="fuelType" value={fuelType} onChange={this.handleChange}>
             <option>---Fuel Type---</option>
-            <option>Diesel</option>
-            <option>Electric</option>
-            <option>Gas</option>
-          </select> */}
+            <option value="diesel">Diesel</option>
+            <option value="electric">Electric</option>
+            <option value="gas">Gas</option>
+          </select>
 
           <label htmlFor="fuelLevel">Fuel Level: </label>
           <input
             name="fuelLevel"
+            min="1"
+            max="100"
             value={fuelLevel}
             onChange={this.handleChange}
             placeholder="Number between 1-100"

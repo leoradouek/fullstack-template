@@ -3,14 +3,17 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchRobot } from "../redux/singleRobot";
 
+import ProjectsAssigned from "./ProjectsAssigned";
+
 class SingleRobot extends React.Component {
   componentDidMount() {
-    this.props.getRobot(this.props.match.params.id);
+    this.props.fetch(this.props.match.params.id);
   }
 
   render() {
     const robot = this.props.robot;
     const projects = robot.projects || [];
+
     return (
       <div className="single-view-container">
         <div className="single-main">
@@ -28,25 +31,11 @@ class SingleRobot extends React.Component {
         </div>
 
         <div className="single-assigned">
-          <h4>Projects assigned to {robot.name}:</h4>
           <div>
+            <h1>Projects assigned to {robot.name}:</h1>
             {projects.length > 0 ? (
               projects.map((project) => (
-                <div key={project.id} id="single-robot-project">
-                  <h3>{project.title}</h3>
-                  <div id="single-details">
-                    <p>Description: {project.description}</p>
-                    <p>Deadline: {project.deadline}</p>
-                    <p>Priority: {project.priority}</p>
-                  </div>
-                  <button
-                    type="button"
-                    className="delete"
-                    onClick={() => this.props.removeRobot(robot.id)}
-                  >
-                    Unassign
-                  </button>
-                </div>
+                <ProjectsAssigned key={project.id} project={project} />
               ))
             ) : (
               <p>{robot.name} does not have any projects assigned</p>
@@ -66,7 +55,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getRobot: (id) => dispatch(fetchRobot(id)),
+    fetch: (id) => dispatch(fetchRobot(id)),
   };
 };
 

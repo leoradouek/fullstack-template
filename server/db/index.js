@@ -5,8 +5,8 @@ const db = require("./database");
 const Project = require("./project");
 const Robot = require("./robot");
 
-Project.belongsToMany(Robot, { through: "robot_projects" });
-Robot.belongsToMany(Project, { through: "robot_projects" });
+Project.belongsToMany(Robot, { through: "assigned" });
+Robot.belongsToMany(Project, { through: "assigned" });
 
 module.exports = {
   // Include your models in this exports object as well!

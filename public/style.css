@@ -223,12 +223,15 @@ h3:hover {
 
 .single-assigned {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
+.single-assigned form {
+  flex-basis: 200%;
+}
 .single-assigned > div {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #single-robot-project {

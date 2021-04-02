@@ -20,9 +20,28 @@ const robots = [
     fuelLevel: 64.88,
     imageUrl: "https://robohash.org/matrix",
   },
+  {
+    name: "Peasant",
+    fuelType: "gas",
+    fuelLevel: 72.3,
+    imageUrl: "https://robohash.org/peasant",
+  },
+  {
+    name: "Rapbot",
+    fuelType: "diesel",
+    fuelLevel: 10,
+    imageUrl: "https://robohash.org/rapbot",
+  },
+  {
+    name: "Sirbot",
+    fuelType: "gas",
+    fuelLevel: 0.9,
+    imageUrl: "https://robohash.org/sirbot",
+  },
 ];
 
 const date = new Date();
+
 const projects = [
   {
     title: "Customer Service",
@@ -30,7 +49,7 @@ const projects = [
     priority: 5,
     completed: false,
     description:
-      "helps health care providers and patients by greeting them in person and by phone, answering questions and requests, and referring inquiries to the pharmacist.",
+      "Helps health care providers and patients by greeting them in person and by phone, answering questions and requests, and referring inquiries to the pharmacist.",
   },
   {
     title: "Maintain Records",
@@ -38,7 +57,7 @@ const projects = [
     priority: 6,
     completed: false,
     description:
-      "maintains records by recording and filing physicians’ orders and prescriptions.",
+      "Maintains records by recording and filing physicians’ orders and prescriptions.",
   },
   {
     title: "Maintain Inventory",
@@ -46,7 +65,31 @@ const projects = [
     priority: 8,
     completed: false,
     description:
-      "maintains pharmacy inventory by checking pharmaceutical stock to determine inventory level, anticipating needed medications and supplies, placing and expediting orders, verifying receipt, and removing outdated drugs.",
+      "Maintains pharmacy inventory by checking pharmaceutical stock to determine inventory level, anticipating needed medications and supplies, placing and expediting orders, verifying receipt, and removing outdated drugs.",
+  },
+  {
+    title: "Cleaning",
+    deadline: date,
+    priority: 10,
+    completed: false,
+    description:
+      "Maintains a clean working environment, including pharmacy counters, floors and bathrooms",
+  },
+
+  {
+    title: "Prescription Filling",
+    deadline: date,
+    priority: 8,
+    completed: false,
+    description: "Fills prescription according to label for Pharmacist review",
+  },
+  {
+    title: "Insurance Billing",
+    deadline: date,
+    priority: 8,
+    completed: false,
+    description:
+      "Performs third-party billing, including calls for prior authorization and vacation overrides",
   },
 ];
 const seed = async () => {
