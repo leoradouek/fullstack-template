@@ -62,6 +62,17 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/:id/:robotId", async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.id);
+    const robot = await Robot.findByPk(req.params.robotId);
+    await project.removeRobot(robot);
+    res.send(robot);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // *** PUT ***
 
 router.put("/:id", async (req, res, next) => {

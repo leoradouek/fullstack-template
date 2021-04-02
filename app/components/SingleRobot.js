@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchRobot, setRobot } from "../redux/singleRobot";
+import {
+  fetchRobot,
+  setRobot,
+  deleteAssignedProject,
+} from "../redux/singleRobot";
 import { updateRobot } from "../redux/robots";
-
-import ProjectsAssigned from "./ProjectsAssigned";
 
 class SingleRobot extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class SingleRobot extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +25,6 @@ class SingleRobot extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("UPDATE state:", this.state);
     if (prevProps.robot.id !== this.props.robot.id) {
       this.setState({
         robotName: this.props.robot.name || "",
@@ -44,9 +45,12 @@ class SingleRobot extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log("handle submit");
     event.preventDefault();
     this.props.editRobot({ ...this.props.robot, ...this.state });
+  }
+
+  handleClick(robotId, projectId) {
+    this.props.removeAssignedProject(robotId, projectId);
   }
 
   render() {
@@ -62,11 +66,6 @@ class SingleRobot extends React.Component {
             <p>Name: {robot.name}</p>
             <p>Fuel Type: {robot.fuelType}</p>
             <p>Fuel Level: {robot.fuelLevel}</p>
-            <Link to={`/robots/update/${robot.id}`}>
-              <button type="button" className="update">
-                Edit <i className="fa fa-edit"></i>
-              </button>
-            </Link>
           </div>
         </div>
 
@@ -83,13 +82,6 @@ class SingleRobot extends React.Component {
                 onChange={this.handleChange}
               />
 
-              <label htmlFor="fuelType">Fuel Type: </label>
-              <input
-                name="fuelType"
-                value={fuelType}
-                onChange={this.handleChange}
-              />
-
               <label htmlFor="fuelLevel">Fuel Level: </label>
               <input
                 name="fuelLevel"
@@ -97,19 +89,51 @@ class SingleRobot extends React.Component {
                 onChange={this.handleChange}
               />
 
+              <label htmlFor="fuelType">Fuel Type: </label>
+              <select
+                name="fuelType"
+                value={fuelType}
+                onChange={this.handleChange}
+              >
+                <option>---Fuel Type---</option>
+                <option value="diesel">Diesel</option>
+                <option value="electric">Electric</option>
+                <option value="gas">Gas</option>
+              </select>
+
               <button type="submit" className="submit">
                 Save Changes
               </button>
             </div>
           </form>
-          <h1>Projects assigned to {robot.name}:</h1>
-          {projects.length > 0 ? (
-            projects.map((project) => (
-              <ProjectsAssigned key={project.id} project={project} />
-            ))
-          ) : (
-            <p>{robot.name} does not have any projects assigned</p>
-          )}
+          <div className="assign-bottom">
+            <h1>Projects assigned to {robot.name}:</h1>
+            <h4>Number of projects: {projects.length}</h4>
+            <h4>List of Projects:</h4>
+            {projects.length > 0 ? (
+              projects.map((project) => (
+                <div id="single-robot-project" key={project.id}>
+                  <h3>{project.title}</h3>
+                  <div id="single-details">
+                    <p>Description: {project.description}</p>
+                    <p>Deadline: {project.deadline}</p>
+                    <p>Priority: {project.priority}</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="unassign"
+                    onClick={() => {
+                      this.handleClick(robot.id, project.id);
+                    }}
+                  >
+                    Unassign
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p>{robot.name} does not have any projects assigned</p>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -122,11 +146,13 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
     editRobot: (robot) => dispatch(updateRobot(robot, history)),
     fetch: (id) => dispatch(fetchRobot(id)),
     clear: () => dispatch(setRobot({})),
+    removeAssignedProject: (robotId, projectId) =>
+      dispatch(deleteAssignedProject(robotId, projectId)),
   };
 };
 

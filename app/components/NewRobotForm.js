@@ -40,14 +40,6 @@ class NewRobotForm extends React.Component {
             placeholder="Name"
           />
 
-          <label htmlFor="fuelType">Fuel Type: </label>
-          <select name="fuelType" value={fuelType} onChange={this.handleChange}>
-            <option>---Fuel Type---</option>
-            <option value="diesel">Diesel</option>
-            <option value="electric">Electric</option>
-            <option value="gas">Gas</option>
-          </select>
-
           <label htmlFor="fuelLevel">Fuel Level: </label>
           <input
             name="fuelLevel"
@@ -57,6 +49,14 @@ class NewRobotForm extends React.Component {
             onChange={this.handleChange}
             placeholder="Number between 1-100"
           />
+
+          <label htmlFor="fuelType">Fuel Type: </label>
+          <select name="fuelType" value={fuelType} onChange={this.handleChange}>
+            <option>---Fuel Type---</option>
+            <option value="diesel">Diesel</option>
+            <option value="electric">Electric</option>
+            <option value="gas">Gas</option>
+          </select>
 
           <button type="submit" className="submit">
             Add Robot

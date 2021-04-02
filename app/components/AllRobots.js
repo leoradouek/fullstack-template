@@ -2,19 +2,27 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchRobots, deleteRobot } from "../redux/robots";
+import Loading from "./LoadingPage";
 
-// Notice that we're exporting the AllRobots component twice. The named export
-// (below) is not connected to Redux, while the default export (at the very
-// bottom) is connected to Redux. Our tests should cover _both_ cases.
 export class AllRobots extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true,
+    };
+  }
+
   componentDidMount() {
     this.props.getRobots();
+    this.setState({ loading: false });
   }
 
   render() {
     const robots = this.props.robots;
 
-    return (
+    return this.state.loading ? (
+      <Loading />
+    ) : (
       <div className="all-view-container">
         <div className="all-top">
           <h1>All Robots</h1>

@@ -10,8 +10,7 @@ module.exports = db.define("project", {
     },
   },
   deadline: {
-    type: Sequelize.DATE(6),
-    default: new Date().toDateString(),
+    type: Sequelize.DATE,
   },
   priority: {
     type: Sequelize.INTEGER,
@@ -19,10 +18,11 @@ module.exports = db.define("project", {
       min: 1,
       max: 10,
     },
+    defaultValue: 5,
   },
   completed: {
     type: Sequelize.BOOLEAN,
-    defaultValue: "false",
+    defaultValue: false,
   },
   description: {
     type: Sequelize.TEXT,

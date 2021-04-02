@@ -90,7 +90,7 @@ h1 {
   font-size: 25px;
   font-family: Trirong, Cambria, Cochin, Georgia, Times, "Times New Roman",
     serif;
-  text-align: center;
+  text-align: left;
   color: rgb(115, 150, 247);
 }
 
@@ -196,17 +196,27 @@ h3:hover {
 }
 
 .single-main {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  align-items: center;
-  background-image: radial-gradient(aliceblue, rgb(104, 182, 250));
+  align-items: center; */
+  background-color: rgb(45, 115, 185);
   padding: 10px;
+  margin: 18px;
+}
+
+.single-main p {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  color: aliceblue;
 }
 
 .single-main img {
   border-radius: 50%;
   background-color: white;
-  width: 200px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .single-main #details {
@@ -218,50 +228,60 @@ h3:hover {
 }
 
 .single-main #details p {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 14px;
+  color: aliceblue;
 }
 
 .single-assigned {
-  display: flex;
-  flex-direction: row;
+  padding: 16px;
 }
 
-.single-assigned form {
-  flex-basis: 200%;
+.assign-bottom {
+  border: 1px dotted black;
+  margin-top: 30px;
+  padding: 10px;
+  background-color: aliceblue;
 }
-.single-assigned > div {
+.assigned-to {
   display: flex;
   flex-direction: column;
 }
 
 #single-robot-project {
-  flex-basis: 33%;
-  display: flex;
-  flex-direction: row;
-  margin: 5px;
+  display: block;
+  margin: 10px;
   padding: 5px;
   border: 0.5px dotted rgb(170, 170, 202);
+  background-color: rgb(237, 244, 250);
 }
 
 #single-robot-project img {
   border-radius: 50%;
   background-color: white;
-  width: 30%;
+  width: 18%;
 }
 
 #single-robot-project h3 {
   padding: 20px;
 }
 
+.unassign {
+  background-color: dodgerblue;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  cursor: pointer;
+  margin: 20px;
+  height: fit-content;
+}
+
+.unassign:hover {
+  background-color: royalblue;
+}
+
 .single-assigned p {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin-left: 20px;
-}
-
-.single-assigned > p {
-  font-weight: bold;
-  text-decoration: underline;
-  text-align: center;
 }
 
 h4 {
@@ -295,7 +315,9 @@ h4 {
 .form-container {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  border: 1px dotted black;
+  padding: 10px;
+  background-color: aliceblue;
 }
 
 .form-container h1 {
@@ -313,6 +335,11 @@ h4 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: rgb(150, 188, 219);
 }
+
+.form label {
+  margin: 10px;
+}
+
 input {
   width: 100%;
   padding: 15px;
@@ -328,7 +355,7 @@ input:focus {
 }
 
 .submit {
-  background-color: rgb(115, 150, 247);
+  background-color: dodgerblue;
   color: white;
   padding: 16px 20px;
   margin: 8px 0;
@@ -339,7 +366,7 @@ input:focus {
 }
 
 .submit:hover {
-  opacity: 1;
+  background-color: royalblue;
 }
 
 /* Page Not Found */

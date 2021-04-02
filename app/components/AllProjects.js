@@ -2,19 +2,27 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchProjects, deleteProject } from "../redux/projects";
+import Loading from "./LoadingPage";
 
-// Notice that we're exporting the AllProjects component twice. The named export
-// (below) is not connected to Redux, while the default export (at the very
-// bottom) is connected to Redux. Our tests should cover _both_ cases.
 export class AllProjects extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true,
+    };
+  }
+
   componentDidMount() {
     this.props.getProjects();
+    this.setState({ loading: false });
   }
 
   render() {
     const projects = this.props.projects;
 
-    return (
+    return this.state.loading ? (
+      <Loading />
+    ) : (
       <div className="all-view-container">
         <div className="all-top">
           <h1>All Projects</h1>
@@ -30,12 +38,12 @@ export class AllProjects extends React.Component {
               <div key={project.id} className="single">
                 <div>
                   <Link to={`/projects/${project.id}`}>
-                    {/* <Link to={`/projects/${project.id}`} key={project.id}> */}
                     <h3>{project.title}</h3>
                   </Link>
                   <div className="description">
-                    <p>Description:</p>
-                    <p>{project.description}</p>
+                    <p>Description: {project.description}</p>
+                    <p>Priority: {Number(project.priority)}</p>
+                    <p>Completed: {project.completed.toString()}</p>
                   </div>
                 </div>
 

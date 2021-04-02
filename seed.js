@@ -40,12 +40,10 @@ const robots = [
   },
 ];
 
-const date = new Date();
-
 const projects = [
   {
     title: "Customer Service",
-    deadline: date,
+    deadline: new Date().toDateString(),
     priority: 5,
     completed: false,
     description:
@@ -53,7 +51,7 @@ const projects = [
   },
   {
     title: "Maintain Records",
-    deadline: date,
+    deadline: new Date().toDateString(),
     priority: 6,
     completed: false,
     description:
@@ -61,7 +59,7 @@ const projects = [
   },
   {
     title: "Maintain Inventory",
-    deadline: date,
+    deadline: new Date().toDateString(),
     priority: 8,
     completed: false,
     description:
@@ -69,7 +67,7 @@ const projects = [
   },
   {
     title: "Cleaning",
-    deadline: date,
+    deadline: new Date().toDateString(),
     priority: 10,
     completed: false,
     description:
@@ -78,20 +76,21 @@ const projects = [
 
   {
     title: "Prescription Filling",
-    deadline: date,
+    deadline: new Date().toDateString(),
     priority: 8,
     completed: false,
     description: "Fills prescription according to label for Pharmacist review",
   },
   {
     title: "Insurance Billing",
-    deadline: date,
+    deadline: new Date().toDateString(),
     priority: 8,
     completed: false,
     description:
       "Performs third-party billing, including calls for prior authorization and vacation overrides",
   },
 ];
+
 const seed = async () => {
   try {
     await db.sync({ force: true });

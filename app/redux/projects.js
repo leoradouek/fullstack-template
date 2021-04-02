@@ -73,7 +73,7 @@ export const deleteProject = (id) => {
 export const updateProject = (project, history) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/api/robots/${project.id}`, project);
+      const { data } = await axios.put(`/api/projects/${project.id}`, project);
       dispatch(_updateProject(data));
       history.push("/projects");
     } catch (err) {
@@ -99,9 +99,3 @@ export default (state = [], action) => {
       return state;
   }
 };
-
-// Take a look at app/redux/index.js to see where this reducer is
-// added to the Redux store with combineReducers
-// export default function projectsReducer() {
-//   return null;
-// }

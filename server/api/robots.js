@@ -49,30 +49,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// router.post("/", async (req, res, next) => {
-//   try {
-//     const doesRobotExist = await Robot.findOne({
-//       where: {
-//         name: req.body.name,
-//       },
-//     });
-//     if (!doesRobotExist) {
-//       const robot = {
-//         name: req.body.robotName,
-//         fuelType: req.body.fuelType,
-//         fuelLevel: req.body.fuelLevel,
-//       };
-//       const newRobot = await Robot.create(robot);
-//       res.status(201).json(newRobot);
-//       return;
-//     }
-//     res.status(409).send("not found");
-//     //res.sendStatus(409);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 // *** DELETE ***
 
 router.delete("/:id", async (req, res, next) => {
@@ -80,6 +56,17 @@ router.delete("/:id", async (req, res, next) => {
     const robot = await Robot.findByPk(req.params.id);
     await robot.destroy();
     res.send(robot);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id/:projectId", async (req, res, next) => {
+  try {
+    const robot = await Robot.findByPk(req.params.id);
+    const project = await Project.findByPk(req.params.projectId);
+    await robot.removeProject(project);
+    res.send(project);
   } catch (error) {
     next(error);
   }

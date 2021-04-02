@@ -36,9 +36,8 @@ export const _updateRobot = (robot) => {
   };
 };
 
-// thunk creator
+// thunk creators
 export const fetchRobots = () => {
-  // thunk
   return async (dispatch) => {
     try {
       const { data } = await axios.get("/api/robots");
@@ -101,9 +100,3 @@ export default (state = [], action) => {
       return state;
   }
 };
-
-// Take a look at app/redux/index.js to see where this reducer is
-// added to the Redux store with combineReducers
-// export default function robotsReducer() {
-//   return null;
-// }
