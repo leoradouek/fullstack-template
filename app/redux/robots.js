@@ -50,24 +50,36 @@ export const fetchRobots = () => {
 
 export const createRobot = (robot, history) => {
   return async (dispatch) => {
-    const { data } = await axios.post("/api/robots", robot);
-    dispatch(_createRobot(data));
-    history.push("/robots");
+    try {
+      const { data } = await axios.post("/api/robots", robot);
+      dispatch(_createRobot(data));
+      history.push("/robots");
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
 export const deleteRobot = (id) => {
   return async (dispatch) => {
-    const { data } = await axios.delete(`/api/robots/${id}`);
-    dispatch(_deleteRobot(data));
+    try {
+      const { data } = await axios.delete(`/api/robots/${id}`);
+      dispatch(_deleteRobot(data));
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
 export const updateRobot = (robot, history) => {
   return async (dispatch) => {
-    const { data } = await axios.put(`api/robots/${robot.id}`, robot);
-    dispatch(_updateRobot(data));
-    // history.push("/robots");
+    try {
+      const { data } = await axios.put(`api/robots/${robot.id}`, robot);
+      dispatch(_updateRobot(data));
+      // history.push("/robots");
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 

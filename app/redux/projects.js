@@ -49,24 +49,36 @@ export const fetchProjects = () => {
 
 export const createProject = (project, history) => {
   return async (dispatch) => {
-    const { data } = await axios.post("/api/projects", project);
-    dispatch(_createProject(data));
-    history.push("/projects");
+    try {
+      const { data } = await axios.post("/api/projects", project);
+      dispatch(_createProject(data));
+      history.push("/projects");
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
 export const deleteProject = (id) => {
   return async (dispatch) => {
-    const { data } = await axios.delete(`/api/projects/${id}`);
-    dispatch(_deleteProject(data));
+    try {
+      const { data } = await axios.delete(`/api/projects/${id}`);
+      dispatch(_deleteProject(data));
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
 export const updateProject = (project, history) => {
   return async (dispatch) => {
-    const { data } = await axios.put(`api/robots/${project.id}`, project);
-    dispatch(_updateProject(data));
-    // history.push("/projects");
+    try {
+      const { data } = await axios.put(`api/robots/${project.id}`, project);
+      dispatch(_updateProject(data));
+      // history.push("/projects");
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
