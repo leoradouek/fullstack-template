@@ -1,4 +1,3 @@
-const express = require("express");
 const Sequelize = require("sequelize");
 const db = require("./database");
 
@@ -12,6 +11,7 @@ module.exports = db.define("project", {
   },
   deadline: {
     type: Sequelize.DATE(6),
+    default: new Date().toDateString(),
   },
   priority: {
     type: Sequelize.INTEGER,
@@ -22,7 +22,7 @@ module.exports = db.define("project", {
   },
   completed: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    defaultValue: "false",
   },
   description: {
     type: Sequelize.TEXT,

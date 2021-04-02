@@ -73,9 +73,9 @@ export const deleteProject = (id) => {
 export const updateProject = (project, history) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`api/robots/${project.id}`, project);
+      const { data } = await axios.put(`/api/robots/${project.id}`, project);
       dispatch(_updateProject(data));
-      // history.push("/projects");
+      history.push("/projects");
     } catch (err) {
       console.log(err);
     }

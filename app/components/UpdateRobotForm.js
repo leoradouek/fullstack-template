@@ -16,8 +16,7 @@ class UpdateRobotForm extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.fetch(id);
+    this.props.fetch(this.props.match.params.id);
     console.log("MOUNT state:", this.state);
   }
 
@@ -43,6 +42,7 @@ class UpdateRobotForm extends React.Component {
   }
 
   handleSubmit(event) {
+    console.log("handle submit");
     event.preventDefault();
     this.props.editRobot({ ...this.props.robot, ...this.state });
   }

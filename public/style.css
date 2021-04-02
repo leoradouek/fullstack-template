@@ -342,9 +342,35 @@ input:focus {
   opacity: 1;
 }
 
-/* .column {
+/* Page Not Found */
+
+.not-found {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-} */
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found a {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(60, 113, 156);
+}
+
+.not-found a:hover {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(94, 173, 238);
+}
+
+.not-found img {
+  width: 800px;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.not-found h1 {
+  color: rgb(60, 113, 156);
+}
+h5 {
+  color: rgb(60, 113, 156);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 15px;
+}

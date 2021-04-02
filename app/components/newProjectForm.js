@@ -8,14 +8,25 @@ class NewProjectForm extends React.Component {
     this.state = {
       title: "",
       description: "",
-      priority: "",
+      priority: 5,
+      completed: "false",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    console.log("name", event.target.name);
+    console.log("value", event.target.value);
+    console.log("convert to number", Number(event.target.value));
+    if (event.target.name === "priority") {
+      let priorityNum = Number(event.target.value);
+      this.setState({ priority: priorityNum });
+    } else {
+      this.setState({ [event.target.name]: event.target.value });
+    }
+
+    console.log(this.state);
   }
 
   handleSubmit(event) {
@@ -48,13 +59,22 @@ class NewProjectForm extends React.Component {
             placeholder="Description of project"
           />
 
-          <label htmlFor="priority">Priority Level:</label>
+          <label htmlFor="priority">Priority Level: </label>
+          <select name="priority" value={priority} onChange={this.handleChange}>
+            <option>---Priority Level---</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+
+          {/* <label htmlFor="priority">Priority:</label>
           <input
             name="priority"
             value={priority}
             onChange={this.handleChange}
-            placeholder="Number between 1-10"
-          />
+            placeholder="Priority Level 1-10"
+          /> */}
+
           <button type="submit" className="submit">
             Add Project
           </button>

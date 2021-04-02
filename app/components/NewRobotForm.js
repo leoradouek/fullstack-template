@@ -9,7 +9,6 @@ class NewRobotForm extends React.Component {
       robotName: "",
       fuelType: "",
       fuelLevel: "",
-      errorMessage: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

@@ -7,6 +7,7 @@ const DELETE_ROBOT = "DELETE_ROBOT";
 const UPDATE_ROBOT = "UPDATE_ROBOT";
 
 // action creator
+
 export const setRobots = (robots) => {
   return {
     type: SET_ROBOTS,
@@ -74,9 +75,9 @@ export const deleteRobot = (id) => {
 export const updateRobot = (robot, history) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`api/robots/${robot.id}`, robot);
+      const { data } = await axios.put(`/api/robots/${robot.id}`, robot);
       dispatch(_updateRobot(data));
-      // history.push("/robots");
+      history.push("/robots");
     } catch (err) {
       console.log(err);
     }
