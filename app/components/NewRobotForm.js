@@ -6,7 +6,7 @@ class NewRobotForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      robotName: "",
+      name: "",
       fuelType: "",
       fuelLevel: "",
     };
@@ -24,7 +24,7 @@ class NewRobotForm extends React.Component {
   }
 
   render() {
-    const { robotName, fuelType, fuelLevel } = this.state;
+    const { name, fuelType, fuelLevel } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -32,10 +32,10 @@ class NewRobotForm extends React.Component {
           <h1>New Robot Employee</h1>
           <p>Please fill out this form to create a new robot:</p>
 
-          <label htmlFor="robotName">Robot Name: </label>
+          <label htmlFor="name">Robot Name: </label>
           <input
-            name="robotName"
-            value={robotName}
+            name="name"
+            value={name}
             onChange={this.handleChange}
             placeholder="Name"
           />

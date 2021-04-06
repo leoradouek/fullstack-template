@@ -5,8 +5,8 @@ const Homepage = () => {
     <main>
       <div>
         <p>
-          Welcome to StackBot Pharmacy Project Management: your robot
-          technicians are awaiting assignments
+          Welcome to StackBot Pharmacy Project Management: your robots are
+          awaiting assignments
         </p>
       </div>
     </main>

@@ -38,7 +38,6 @@ export const deleteAssignedProject = (robotid, projectId) => {
         `/api/robots/${robotid}/${projectId}`
       );
       dispatch(_deleteAssignedProject(data));
-      console.log("delete thunk");
     } catch (error) {
       console.log(error);
     }

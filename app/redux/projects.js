@@ -5,6 +5,7 @@ const SET_PROJECTS = "SET_PROJECTS";
 const CREATE_PROJECT = "CREATE_PROJECT";
 const DELETE_PROJECT = "DELETE_PROJECT";
 const UPDATE_PROJECT = "UPDATE_PROJECT";
+const MARK_COMPLETE = "MARK_COMPLETE";
 
 // action creator
 export const setProjects = (projects) => {
@@ -31,6 +32,13 @@ export const _deleteProject = (project) => {
 export const _updateProject = (project) => {
   return {
     type: UPDATE_PROJECT,
+    project,
+  };
+};
+
+export const markComplete = (project) => {
+  return {
+    type: MARK_COMPLETE,
     project,
   };
 };
@@ -95,6 +103,13 @@ export default (state = [], action) => {
       return state.map((project) =>
         project.id === action.project.id ? action.project : project
       );
+    case MARK_COMPLETE:
+      return state.map((project) =>
+        project.id === action.project.id
+          ? { ...action.project, completed: true }
+          : project
+      );
+
     default:
       return state;
   }

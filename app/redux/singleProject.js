@@ -18,6 +18,7 @@ export const _deleteAssignedRobot = (robot) => {
     robot,
   };
 };
+
 // thunk creators
 export const fetchProject = (id) => {
   return async (dispatch) => {

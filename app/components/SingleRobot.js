@@ -11,7 +11,7 @@ class SingleRobot extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      robotName: "",
+      name: "",
       fuelType: "",
       fuelLevel: "",
     };
@@ -27,7 +27,7 @@ class SingleRobot extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.robot.id !== this.props.robot.id) {
       this.setState({
-        robotName: this.props.robot.name || "",
+        name: this.props.robot.name || "",
         fuelType: this.props.robot.fuelType || "",
         fuelLevel: this.props.robot.fuelLevel || "",
       });
@@ -56,7 +56,7 @@ class SingleRobot extends React.Component {
   render() {
     const robot = this.props.robot;
     const projects = robot.projects || [];
-    const { robotName, fuelType, fuelLevel } = this.state;
+    const { name, fuelType, fuelLevel } = this.state;
 
     return (
       <div className="single-view-container">
@@ -75,12 +75,8 @@ class SingleRobot extends React.Component {
               <h1>Update Robot</h1>
               <p>Please fill out this form to edit robot:</p>
 
-              <label htmlFor="robotName">Robot Name: </label>
-              <input
-                name="robotName"
-                value={robotName}
-                onChange={this.handleChange}
-              />
+              <label htmlFor="name">Robot Name: </label>
+              <input name="name" value={name} onChange={this.handleChange} />
 
               <label htmlFor="fuelLevel">Fuel Level: </label>
               <input
@@ -140,13 +136,13 @@ class SingleRobot extends React.Component {
   }
 }
 
-const mapState = (state) => {
+const mapStateToProps = (state) => {
   return {
     robot: state.robot,
   };
 };
 
-const mapDispatch = (dispatch, { history }) => {
+const mapDispatchToProps = (dispatch, { history }) => {
   return {
     editRobot: (robot) => dispatch(updateRobot(robot, history)),
     fetch: (id) => dispatch(fetchRobot(id)),
@@ -156,4 +152,4 @@ const mapDispatch = (dispatch, { history }) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(SingleRobot);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleRobot);

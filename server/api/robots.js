@@ -37,7 +37,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const robot = {
-      name: req.body.robotName,
+      name: req.body.name,
       fuelType: req.body.fuelType,
       fuelLevel: req.body.fuelLevel,
     };

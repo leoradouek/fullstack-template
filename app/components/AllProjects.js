@@ -43,6 +43,10 @@ export class AllProjects extends React.Component {
                   <div className="description">
                     <p>Description: {project.description}</p>
                     <p>Priority: {Number(project.priority)}</p>
+                    <p>
+                      Deadline:{" "}
+                      {(projects.deadline || new Date()).toDateString()}
+                    </p>
                     <p>Completed: {project.completed.toString()}</p>
                   </div>
                 </div>

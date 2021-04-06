@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   fetchProject,
   setProject,
   deleteAssignedRobot,
 } from "../redux/singleProject";
-import { updateProject } from "../redux/projects";
+import { updateProject, markComplete } from "../redux/projects";
 
 class SingleProject extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class SingleProject extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleComplete = this.handleComplete.bind(this);
   }
 
   componentDidMount() {
@@ -55,8 +57,12 @@ class SingleProject extends React.Component {
     this.props.removeAssignedRobot(robotId, projectId);
   }
 
+  handleComplete(id) {
+    this.props.complete(id);
+  }
+
   render() {
-    const project = this.props.project;
+    const project = this.props.project || {};
 
     const robots = project.robots || [];
     const { title, description, priority, completed } = this.state;
@@ -65,11 +71,20 @@ class SingleProject extends React.Component {
       <div className="single-view">
         <div className="single-main">
           <p>{project.title}</p>
-
           <div id="details">
             <p>Description: {project.description}</p>
             <p>Priority Level: {project.priority}</p>
+            <p>Deadline: {project.deadline}</p>
           </div>
+          <Link to="/projects">
+            <button
+              type="button"
+              className="complete-button"
+              onClick={() => this.handleComplete(this.props.match.params.id)}
+            >
+              Mark Complete
+            </button>
+          </Link>
         </div>
 
         <div className="single-assigned">
@@ -107,15 +122,16 @@ class SingleProject extends React.Component {
                 <option value="10">10</option>
               </select>
 
-              {/* <label htmlFor="completed">Completed: </label>
+              <label htmlFor="completed">Completed: </label>
               <select
                 name="completed"
                 value={completed}
                 onChange={this.handleChange}
               >
+                <option>---status---</option>
                 <option value="false">false</option>
                 <option value="true">true</option>
-              </select> */}
+              </select>
 
               <button type="submit" className="submit">
                 Save Changes
@@ -171,6 +187,7 @@ const mapDispatch = (dispatch, { history }) => {
     clear: () => dispatch(setProject({})),
     removeAssignedRobot: (projectId, robotId) =>
       dispatch(deleteAssignedRobot(projectId, robotId)),
+    complete: (id) => dispatch(markComplete(id)),
   };
 };
 
